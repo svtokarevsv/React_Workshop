@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
-export default (OriginalComponent) => class WrappedComponent extends Component {
+export default (OriginalComponent) => class Accordion extends Component {
 	state = {
 		openItemId: null
 	}
 
 	render() {
-		return <OriginalComponent {...this.props} {...this.state} toggleOpen={this.toggleOpen} ref={this.getRef}/>
+		return <OriginalComponent {...this.props} openItemId={this.state.openItemId} toggleOpen={this.toggleOpen} ref={this.getRef}/>
 	}
 
 	toggleOpen = openItemId => (e) => {

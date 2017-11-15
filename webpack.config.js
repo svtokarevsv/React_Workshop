@@ -1,7 +1,7 @@
 var path = require('path')
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'eval-cheap-module-source-map',
     entry: [
         './src/index.js'
     ],
@@ -11,12 +11,16 @@ module.exports = {
         publicPath: '/static/'
     },
     module: {
-        loaders: [
-            {
-                test: /\.js/,
-                loaders: ['babel-loader'],
-                include: path.join(__dirname, 'src')
-            }
-        ]
+		loaders: [
+			{
+				test: /\.js/,
+				loaders: ['babel-loader'],
+				include: path.join(__dirname, 'src')
+			},
+			{
+				test: /\.css/,
+				loaders: ['style-loader', 'css-loader'],
+			}
+		]
     }
 }
